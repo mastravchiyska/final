@@ -1,26 +1,29 @@
 var express = require('express');
+var UserModel = require('../models/user-model');
 var router = express.Router();
+
+var userModel = new UserModel();
 
 router.post('/', function (req, res, next) {
     var email = req.body.email;
     var password = req.body.password;
-    var db = req.db;
-    var users = db.get('users');
-    users.find({ email: email, pass: password })
-        .then(function (data) {
-            if (data.length > 0) {
-                req.session.userId = data[0]._id;
-                res.redirect('/');
-            } else {
-                res.render('login', { message: 'Are probvai pak moi chovek' });
-            }
-        });
+    
+    userModel.findUser(email, password).then(function(data) {
+        if(data.length > 0) {
+            sess = req.session;
+            sess.email = email;
+            res.json({ status: 1, data: data[0] , message: 'Successful login!', sess: sess });
+        } else {
+            res.json({ status: 0, message: 'Invalid user data!' });
+        }
+    }).catch(function(err) {
+        res.json({ status: 0, data: err, message: 'Something went wrong!' });
+    }); 
 });
-router.get('/', function (req, res, next) {
-    if (req.session.email)
-        res.redirect('/');
-    else
-        res.render('login');
+
+router.post('/test', function (req, res, next) {
+    sess = req.session;
+    res.json({ test: sess });
 });
 
 module.exports = router;
