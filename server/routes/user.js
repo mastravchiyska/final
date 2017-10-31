@@ -40,10 +40,11 @@ router.post('/update', function (req, res, next) {
     }
 });
 
-router.get('/addFriend', function (req, res, next) {
+router.get('/addFriend/:id', function (req, res, next) {
     id = checkForSession(req);
+    var friendId = req.params.id;
     if (id) {
-        userModel.addFriend(id, idFriend).then(function (data) {
+        userModel.addFriend(id, friendId).then(function (data) {
             res.json({ status: 1 });
         });
     } else {
@@ -59,19 +60,67 @@ router.get('/friends', function (req, res, next) {
             var responded = 0;
             var friendsList = [];
             data.forEach(function (element) {
-                userModel.findUser({ _id: element.friendId })
-                    .then(function (data) {
-                        responded++;
-                        friendsList.push(data[0]);
-                        if (responded === dataLength) {
-                            res.json({ status: 1, data: friendsList });
-                        }
-                    })
+                if (element.friendId !== null) {
+                    userModel.findUser({ _id: element.friendId })
+                        .then(function (data) {
+                            responded++;
+                            friendsList.push(data[0]);
+                            if (responded === dataLength) {
+                                res.json({ status: 1, data: friendsList });
+                            }
+                        });
+                } else {
+                    responded++;
+                    if (responded === dataLength) {
+                        res.json({ status: 1, data: friendsList });
+                    }
+                }
             }, this);
         });
     } else {
         res.json({ status: 0, message: 'Something went wrong!' });
     }
+});
+
+router.get('/requests', function (req, res, next) {
+    id = checkForSession(req);
+    if (id) {
+        userModel.listRequests(id).then(function (data) {
+            var dataLength = data.length;
+            var responded = 0;
+            var requests = [];
+            data.forEach(function (element) {
+                userModel.findUser({ _id: element.userId })
+                    .then(function (data) {
+                        responded++;
+                        requests.push(data[0]);
+                        if (responded === dataLength) {
+                            res.json({ status: 1, data: requests });
+                        }
+                    })
+            }, this);
+        });
+    } else {
+        res.json({ status: 0, message: 'You cannot add this person!' });
+    }
+});
+
+router.delete('/deleteFriendRequest/:requestId', function (req, res, next) {
+    var requestId = req.params.requestId;
+    if (requestId) {
+        userModel.deleteFriendRequest(requestId).then(function () {
+            res.json({ status: 1 });
+        });
+    } else {
+         res.json({ status: 0, message: 'No id!' });
+    }
+});
+
+router.get('/search', function (req, res, next) {
+    var word = 'do';
+    userModel.searchByWord(word).then(function(data) {
+        res.json({data: data});
+    });
 });
 
 
