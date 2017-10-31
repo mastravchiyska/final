@@ -8,10 +8,10 @@ router.post('/', function (req, res, next) {
     var email = req.body.email;
     var password = req.body.password;
     
-    userModel.findUser(email, password).then(function(data) {
+    userModel.findUser({email: email, password: password}).then(function(data) {
         if(data.length > 0) {
             sess = req.session;
-            sess.email = email;
+            sess.userId = data[0]._id;
             res.json({ status: 1, data: data[0] , message: 'Successful login!', sess: sess });
         } else {
             res.json({ status: 0, message: 'Invalid user data!' });

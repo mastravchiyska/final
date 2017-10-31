@@ -12,7 +12,7 @@ router.post('/', function (req, res, next) {
     var sex = req.body.sex;
     var password = req.body.password;
 
-    userModel.findUser(email).then(function(data) {
+    userModel.findUser({email: email}).then(function(data) {
         if(data.length > 0) {
             res.json({ status: 0, message: 'This Email is already used!' })
         } else {
