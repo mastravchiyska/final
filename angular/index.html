@@ -13,13 +13,14 @@
     <script src="assets/script/angular/angular.min.js"></script>
     <script src="assets/script/angular/angular-route.min.js"></script>
     <script src="assets/script/controllers/pageController.js"></script>
+    <link rel="stylesheet" href="assets/styles/styles.css">
 </head>
 
 <body ng-app="myApp">
     <header id="header">
         <img src="assets/images/logo.jpg" alt="logo" id="logo">
         <form>
-            <div class="input-group">
+            <div class="input-group" id="search">
                 <input type="text" class="form-control" placeholder="Search">
                 <div class="input-group-btn">
                     <button class="btn btn-default" type="submit">
@@ -55,14 +56,14 @@
 
 
 
-    <div ng-app="myApp" ng-controller="myCtrl"> 
-        
+    <div ng-app="myApp" ng-controller="myCtrl">
+
         <p>Today's welcome message is:</p>
         <h1>{{myWelcome}}</h1>
-        
-        </div>
-        
-        <script>
+
+    </div>
+
+    <!-- <script>
         var app = angular.module('myApp', []);
         app.controller('myCtrl', function($scope, $http) {
             $http.get("localhost:4000/")
@@ -70,7 +71,7 @@
                 $scope.myWelcome = response.data;
             });
         });
-        </script>
+        </script> -->
 </body>
 
 </html>

@@ -6,37 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="icon" href="assets/images/logo.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="assets/script/angular/angular.min.js"></script>
+    <script src="assets/script/angular/angular-route.min.js"></script>
+    <script src="assets/script/controllers/pageController.js"></script>
+    <link rel="stylesheet" href="assets/styles/styles.css">
 </head>
 
 <body>
     <header ng-controller="LoginController">
-        <img src="assets/images/logo.jpg" alt="logo" id="logo">
-        <input type="text" placeholder="email" class="form-control" name='email'>
-        <input type="text" placeholder="password" class="form-control" name='password'>
-    </header>
+        <img src="assets/images/logo.png" alt="logo" id="logo">
+        <input type="button" value="Login" class="btn btn-primary loginBut">
+        <input type="text" placeholder="email" class="form-control login" name='email'>
+        <input type="text" placeholder="password" class="form-control login" name='password'>
 
-    <div>
-        <img src="" alt="HomeScreenImage">
-        <form action="" method="POST" id="registerForm" class="well">
-            <p>Register now:</p>
-            <input type="text" placeholder="First Name" class="form-control" name=" name">
-            <br>
-            <input type="text" placeholder="Last Name" class="form-control" name="lastname">
-            <br>
-            <input type="text" placeholder="Email" class="form-control" name="email">
-            <br>
-            <label for="genderSelect">Sex:</label>
-            <select id="genderSelect" name="sex">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-            <br>
-            <input type="password" placeholder="Password" class="form-control" name="password">
-            <br>
-            <input type="date" name="birthday">
-            <br>
-            <input type="button" value="Register" class="btn btn-primary">
-        </form>
+    </header>
+    <form action="" method="POST" id="registerForm" class="well">
+        <p>Register now for free:</p>
+        <input type="text" placeholder="First Name" class="form-control" name=" name">
+        <br>
+        <input type="text" placeholder="Last Name" class="form-control" name="lastname">
+        <br>
+        <input type="text" placeholder="Email" class="form-control" name="email">
+        <br>
+        <input type="password" placeholder="Password" class="form-control" name="password">
+        <br>
+        <input type="date" name="birthday" class="form-control">
+        <br>
+        <label class="radio-inline">
+            <input type="radio" name="optradio">Male</label>
+        <label class="radio-inline">
+            <input type="radio" name="optradio">Female</label>
+        <br>
+        <input type="button" value="Register" class="btn btn-primary registerb">
+    </form>
     </div>
 </body>
 
