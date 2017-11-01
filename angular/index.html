@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
     <script src="assets/script/controllers/pageController.js"></script>
 </head>
 
-<body>
+<body ng-app="myApp">
     <header id="header">
         <img src="assets/images/logo.jpg" alt="logo" id="logo">
         <form>
@@ -44,8 +44,6 @@
                 </li>
             </ul>
         </div>
-        <input type="text" placeholder="email" class="form-control" ng-model="name">{{name}}
-        <input type="text" placeholder="password" class="form-control">
         <hr>
     </header>
 
@@ -53,6 +51,26 @@
 
 
     </main>
+
+
+
+
+    <div ng-app="myApp" ng-controller="myCtrl"> 
+        
+        <p>Today's welcome message is:</p>
+        <h1>{{myWelcome}}</h1>
+        
+        </div>
+        
+        <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope, $http) {
+            $http.get("localhost:4000/")
+            .then(function(response) {
+                $scope.myWelcome = response.data;
+            });
+        });
+        </script>
 </body>
 
 </html>

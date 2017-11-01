@@ -14,9 +14,6 @@ app.config(function ($routeProvider) {
         .when("/pictureList", {
             templateUrl: "assets/script/views/pictureList.htm"
         })
-        .when("/register", {
-            templateUrl: "assets/script/views/register.htm"
-        })
         .when("/searchScreen", {
             templateUrl: "assets/script/views/searchScreen.htm"
         });
