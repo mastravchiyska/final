@@ -1,9 +1,11 @@
-body{
-    background-image: url("../images/reg-bg.jpg")
+#loginBody{
+    background-image: url("../images/reg-bg.jpg");
+    height:100vh;
+
 }
 
 header{
-    background-color: #00ccff;
+    background-color: rgba(	0, 204, 255, 1);
     padding: 1em;
 }
 
@@ -13,9 +15,8 @@ header{
 
 .well{
     width: 47.6em;
-    margin: 5em;
     margin-left: 30%;
-    background-color:rgba(1, 218, 193, 0.4);
+    background-color:rgba(	0, 204, 255, 0.4);
 }
 
 .login{
@@ -47,4 +48,8 @@ header{
 
 .registerb{
     margin-left: 20em;
+}
+
+#mainBody{
+    background-color: rgb(244, 247, 246)
 }
