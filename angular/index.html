@@ -12,15 +12,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="assets/script/angular/angular.min.js"></script>
     <script src="assets/script/angular/angular-route.min.js"></script>
-    <script src="assets/script/controllers/pageController.js"></script>
-    <link rel="stylesheet" href="assets/styles/styles.css">
+    <script src="main.js"></script>
+    <script src="assets/script/controllers/login/LoginController.js"></script>
+    <script src="assets/script/controllers/login/LoginService.js"></script>
 </head>
 
-<body ng-app="myApp">
-    <header id="header">
+<body ng-app="tdApp">
+    <!--<header id="header">
         <img src="assets/images/logo.jpg" alt="logo" id="logo">
         <form>
-            <div class="input-group" id="search">
+            <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search">
                 <div class="input-group-btn">
                     <button class="btn btn-default" type="submit">
@@ -46,32 +47,9 @@
             </ul>
         </div>
         <hr>
-    </header>
+    </header> -->
 
-    <main ng-view>
-
-
-    </main>
-
-
-
-
-    <div ng-app="myApp" ng-controller="myCtrl">
-
-        <p>Today's welcome message is:</p>
-        <h1>{{myWelcome}}</h1>
-
-    </div>
-
-    <!-- <script>
-        var app = angular.module('myApp', []);
-        app.controller('myCtrl', function($scope, $http) {
-            $http.get("localhost:4000/")
-            .then(function(response) {
-                $scope.myWelcome = response.data;
-            });
-        });
-        </script> -->
+    <main ng-view></main>
 </body>
 
 </html>

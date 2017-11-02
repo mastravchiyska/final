@@ -1,6 +1,20 @@
-var app = angular.module('myApp', []);
-app.controller('LoginController', function($scope, $http) {
-    $http.get('localhost:4000/login').then(function(response) {
-        $scope.user = response.data;
-    });
-});
+var app = angular.module('tdApp', ['ngRoute']).
+config(['$routeProvider', function($routeProvider) {
+    $routeProvider
+        .when('/', {
+            templateUrl: 'assets/script/controllers/login/login.htm',
+            controller: 'LoginController'
+        });
+        /*.when('/accountDetails', {
+            templateUrl: 'assets/script/views/accountDetails.htm'
+        })
+        .when('/accountSetting', {
+            templateUrl: 'assets/script/views/accountSetting.htm'
+        })
+        .when('/pictureList', {
+            templateUrl: 'assets/script/views/pictureList.htm'
+        })
+        .when('/searchScreen', {
+            templateUrl: 'assets/script/views/searchScreen.htm'
+        });*/
+}]);
