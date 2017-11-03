@@ -3,7 +3,7 @@ app.controller('LoginController', ['$scope', 'LoginService', function ($scope, L
     
     $scope.login = function() {
         LoginService.login({ "email": "Doncho@mail.com", "password": "verySecure1!" }).then(function(result) {
-            $scope.user = result.data.name;
+            console.log(result.data);
         });
     };
 
