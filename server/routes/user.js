@@ -1,8 +1,10 @@
 var express = require('express');
 var UserModel = require('../models/user-model');
+var PostModel = require('../models/post-model');
 var router = express.Router();
 
 var userModel = new UserModel();
+var postModel = new PostModel();
 
 function checkForSession(req) {
     sessionId = req.session.userId;
@@ -112,16 +114,60 @@ router.delete('/deleteFriendRequest/:requestId', function (req, res, next) {
             res.json({ status: 1 });
         });
     } else {
-         res.json({ status: 0, message: 'No id!' });
+        res.json({ status: 0, message: 'No id!' });
     }
 });
 
 router.get('/search', function (req, res, next) {
     var word = 'do';
-    userModel.searchByWord(word).then(function(data) {
-        res.json({data: data});
+    userModel.searchByWord(word).then(function (data) {
+        res.json({ data: data });
     });
 });
 
+router.put('/createPost', function (req, res, next) {
+    var postContent = req.body.postContent;
+    id = checkForSession(req);
+    if (id) {
+        postModel.createPost(id, postContent).then(function (data) {
+            res.json({ data: data });
+        });
+    }
+});
+
+router.delete('/deletePost/:postId', function (req, res, next) {
+    var postId = req.params.postId;
+    if (postId) {
+        postModel.deletePost(postId).then(function () {
+            res.json({ status: 1 });
+        });
+    } else {
+        res.json({ status: 0, message: 'No id!' });
+    }
+});
+
+router.post('/editPost/:postId', function (req, res, next) {
+    var postId = req.params.postId;
+    var postContent = req.body.postContent;
+    id = checkForSession(req);
+    if (id && postId) {
+        postModel.editPost(postId, id, postContent).then(function (data) {
+            res.json({ data: data });
+        });
+    } else {
+        res.json({ status: 0, message: 'No id!' });
+    }
+});
+
+router.get('/listPosts/', function (req, res, next) {
+    id = checkForSession(req);
+    if (id) {
+        postModel.listPosts(id).then(function (data) {
+            res.json({ data: data });
+        });
+    } else {
+        res.json({ status: 0, message: 'No session!' });
+    }
+});
 
 module.exports = router;
