@@ -8,7 +8,6 @@ app.controller('LoginController', ['$scope', 'LoginService', function ($scope, L
             console.log(result.data.data.name);
             sessionStorage.setItem('session_id', result.data.data._id);
             location.reload();
-            
         });
     };
 

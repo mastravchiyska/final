@@ -15,6 +15,22 @@ if (sessionStorage.length == 0) {
                 .when('/', {
                     templateUrl: 'assets/script/controllers/main/main.htm',
                     controller: 'mainController'
+                })
+                .when('/accDetails', {
+                    templateUrl: 'assets/script/controllers/accDetails/accountDetails.htm',
+                    controller: 'adController'
+                })
+                .when('/accSettings', {
+                    templateUrl: 'assets/script/controllers/accSettings/accountSettings.htm',
+                    controller: 'asController'
+                })
+                .when('/pictureList', {
+                    templateUrl: 'assets/script/controllers/pictureList/pictureList.htm',
+                    controller: 'plistController'
+                })
+                .when('/search', {
+                    templateUrl: 'assets/script/controllers/search/search.htm',
+                    controller: 'searchController'
                 });
         }]);
 }

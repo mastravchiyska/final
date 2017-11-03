@@ -5,8 +5,9 @@
 }
 
 header{
-    background-color: rgba(	0, 204, 255, 1);
+    background-color: #00ccff;
     padding: 1em;
+    height: 50px;
 }
 
 #search{
@@ -26,7 +27,7 @@ header{
     margin-top: -0.5em;
 }
 
-.loginBut{
+.headerBut{
     float: right;
     margin: 0.5em;
     margin-top: -0.5em;
@@ -52,4 +53,9 @@ header{
 
 #mainBody{
     background-color: rgb(244, 247, 246)
+}
+
+#search{
+    width: 20em;
+    display: block;
 }
