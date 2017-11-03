@@ -1,5 +1,5 @@
 if (sessionStorage.length == 0) {
-    var app = angular.module('tdApp', ['ngRoute']).
+    var app = angular.module('tdApp', ['ngRoute',]).
         config(['$routeProvider', function ($routeProvider) {
             $routeProvider
                 .when('/', {
@@ -14,7 +14,7 @@ if (sessionStorage.length == 0) {
             $routeProvider
                 .when('/', {
                     templateUrl: 'assets/script/controllers/main/main.htm',
-                    controller: 'mainController'
+                    controller: 'MainController'
                 })
                 .when('/accDetails', {
                     templateUrl: 'assets/script/controllers/accDetails/accountDetails.htm',
