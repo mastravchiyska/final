@@ -125,7 +125,7 @@ router.get('/search', function (req, res, next) {
     });
 });
 
-router.put('/createPost', function (req, res, next) {
+router.post('/createPost', function (req, res, next) {
     var postContent = req.body.postContent;
     id = checkForSession(req);
     if (id) {

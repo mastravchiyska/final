@@ -4,7 +4,7 @@ app.factory('MainService', function ($http, $rootScope) {
     
     Post.prototype.createPost = function (data) {
         return new Promise(function(resolve, reject) {
-            $http.put('http://localhost:4000/user/createPost', data).then(function(response) {
+            $http.post('http://localhost:4000/user/createPost', data).then(function(response) {
                 resolve(response);
             });
         });
