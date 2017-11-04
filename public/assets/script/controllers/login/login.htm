@@ -10,15 +10,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- <script src="assets/script/angular/angular.min.js"></script> -->
-    <!-- <script src="assets/script/angular/angular-route.min.js"></script> -->
     <link rel="stylesheet" href="assets/styles/styles.css">
 </head>
 
 <body ng-controller="LoginController">
-    <header >
+    <header ng-controller="adController">
         <img src="assets/images/logo.png" alt="logo" id="logo">
-        <input type="button" value="Login" class="btn btn-primary headerBut" ng-click="login()">
+        <input type="button" value="Login"  class="btn btn-primary headerBut" ng-click="login()">
         <input type="text" placeholder="email" class="form-control login" name='email' id="loginemail">
         <input type="text" placeholder="password" class="form-control login" name='password' id="loginpass">
     </header>
