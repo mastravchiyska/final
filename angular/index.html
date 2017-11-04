@@ -23,7 +23,7 @@
 
 <body ng-app="tdApp" id="mainBody">
 
-    <header id="header1">
+    <header id="header1" ng-controller="MainController">
 
         <img src="assets/images/logo.png" alt="logo" id="logo">
         <div class="input-group" id="search">
@@ -31,7 +31,7 @@
         </div>
 
         <div class="dropdown headerBut">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{result.data.data.id}}
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" ng-model="name">{{fname}}
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
