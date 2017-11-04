@@ -6,9 +6,9 @@ app.controller('LoginController', ['$scope', 'LoginService', function ($scope, L
 
         var email = document.getElementById("loginemail").value;
         var pass = document.getElementById("loginpass").value;
-        LoginService.login({ "email": "tatyana@abv.bg", "password": "123" }).then(function (result) {
-            sessionStorage.setItem('session_id', result.data.data._id);
-            $scope.fname = result.data.data.name;
+        LoginService.login({ "email": "rumen@abv.bg", "password": "rumen" }).then(function (result) {
+           // sessionStorage.setItem('session_id', result.data.data._id);
+            //$scope.fname = result.data.data.name;
             location.reload();
         });
     

@@ -1,6 +1,7 @@
 var express = require('express');
 var UserModel = require('../models/user-model');
 var PostModel = require('../models/post-model');
+var sha1 = require('sha1');
 var router = express.Router();
 
 var userModel = new UserModel();
@@ -18,10 +19,11 @@ router.get('/profile', function (req, res, next) {
     id = checkForSession(req);
     if (id) {
         userModel.findUser(id).then(function (data) {
+            delete data[0].password;
             res.json({ status: 1, data: data[0] });
         });
     } else {
-        res.json({ status: 0, message: 'You are not logged in!' });
+        res.status(401).json({ message: 'You are not logged in!!' });
     }
 });
 
@@ -31,14 +33,15 @@ router.post('/update', function (req, res, next) {
     var email = req.body.email;
     var birthday = req.body.birthday;
     var sex = req.body.sex;
-    var password = req.body.password;
+    var password = sha1(req.body.password);
     id = checkForSession(req);
     if (id) {
         userModel.updateUserInfo(id, name, lastname, email, birthday, sex, password).then(function (data) {
+            delete data.password;
             res.json({ status: 1, data: data });
         });
     } else {
-        res.json({ status: 0, message: 'Something went wrong!' });
+        res.status(400).json({ message: 'Something went wrong!' });
     }
 });
 
@@ -50,7 +53,7 @@ router.get('/addFriend/:id', function (req, res, next) {
             res.json({ status: 1 });
         });
     } else {
-        res.json({ status: 0, message: 'You cannot add this person!' });
+        res.status(400).json({ message: 'Something went wrong!' });
     }
 });
 
@@ -80,7 +83,7 @@ router.get('/friends', function (req, res, next) {
             }, this);
         });
     } else {
-        res.json({ status: 0, message: 'Something went wrong!' });
+       res.status(400).json({ message: 'Something went wrong!' });
     }
 });
 
@@ -103,7 +106,7 @@ router.get('/requests', function (req, res, next) {
             }, this);
         });
     } else {
-        res.json({ status: 0, message: 'You cannot add this person!' });
+        res.status(400).json({ message: 'Something went wrong!' });
     }
 });
 
@@ -133,18 +136,19 @@ router.post('/createPost', function (req, res, next) {
             res.json({ status: 1, data: data });
         });
     } else {
-        res.json({ status: 0, message: 'Do not have session!' });
+       res.status(401).json({ message: 'You are not logged in!' });
     }
 });
 
 router.delete('/deletePost/:postId', function (req, res, next) {
     var postId = req.params.postId;
-    if (postId) {
+    id = checkForSession(req);
+    if (postId && id) {
         postModel.deletePost(postId).then(function () {
             res.json({ status: 1 });
         });
     } else {
-        res.json({ status: 0, message: 'No id!' });
+       res.status(401).json({ message: 'You are not logged in!' });
     }
 });
 
@@ -157,7 +161,7 @@ router.post('/editPost/:postId', function (req, res, next) {
             res.json({ data: data });
         });
     } else {
-        res.json({ status: 0, message: 'No id!' });
+        res.status(401).json({ message: 'You are not logged in!' });
     }
 });
 
@@ -168,7 +172,7 @@ router.get('/listPosts/', function (req, res, next) {
             res.json({ data: data });
         });
     } else {
-        res.json({ status: 0, message: 'No session!' });
+        res.status(401).json({ message: 'You are not logged in!' });
     }
 });
 
