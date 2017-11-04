@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var mongodb = require('mongodb');
@@ -45,6 +46,8 @@ app.use('/login', login);
 app.use('/register', register);
 app.use('/logout', logout);
 app.use('/user', user);
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(4000, function () {
   console.log('Example app listening on port 4000!')
