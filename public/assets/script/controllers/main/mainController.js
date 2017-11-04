@@ -6,5 +6,5 @@ app.controller('MainController', ['$scope', 'MainService', function ($scope, Mai
             console.log(result);
         });
     };
-    $scope.butName = name;
+    // $scope.butName = name;
 }]);
