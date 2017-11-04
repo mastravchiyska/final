@@ -125,13 +125,15 @@ router.get('/search', function (req, res, next) {
     });
 });
 
-router.put('/createPost', function (req, res, next) {
+router.post('/createPost', function (req, res, next) {
     var postContent = req.body.postContent;
     id = checkForSession(req);
     if (id) {
         postModel.createPost(id, postContent).then(function (data) {
-            res.json({ data: data });
+            res.json({ status: 1, data: data });
         });
+    } else {
+        res.json({ status: 0, message: 'Do not have session!' });
     }
 });
 

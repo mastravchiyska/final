@@ -28,7 +28,7 @@ PostModel.prototype.deletePost = function (postId) {
     });
 };
 
-PostModel.prototype.editPost = function(postId, userId, postContent) {
+PostModel.prototype.editPost = function (postId, userId, postContent) {
     return new Promise(function (resolve, reject) {
         this.postCollection.findOneAndUpdate({ _id: postId }, { $set: { userId: userId, postContent: postContent } },
             { upsert: true, returnNewDocument: true })
