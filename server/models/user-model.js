@@ -130,7 +130,7 @@ UserModel.prototype.searchByWord = function (word) {
                 findedCounter++;
                 results = results.concat(result);
                 if (searchFields.length == findedCounter) {
-                    resolve(results);
+                    resolve(self.getUniqueArray(results));
                 }
             });
         });

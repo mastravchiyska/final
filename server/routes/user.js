@@ -130,8 +130,10 @@ router.post('/createPost', function (req, res, next) {
     id = checkForSession(req);
     if (id) {
         postModel.createPost(id, postContent).then(function (data) {
-            res.json({ data: data });
+            res.json({ status: 1, data: data });
         });
+    } else {
+        res.json({ status: 0, message: 'Do not have session!' });
     }
 });
 

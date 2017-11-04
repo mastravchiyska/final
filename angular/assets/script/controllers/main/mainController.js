@@ -3,7 +3,7 @@ app.controller('MainController', ['$scope', 'MainService', function ($scope, Mai
     $scope.createPost = function () {
         var postContent = document.getElementById("postText").value;
         MainService.createPost({ "userId": sessionId, "postContent": postContent }).then(function (result) {
-            console.log(result.data);
+            console.log(result);
         });
     };
     $scope.butName = name;
