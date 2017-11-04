@@ -24,7 +24,7 @@
     
 </head>
 
-<body ng-app="tdApp" id="mainBody">
+<body ng-app="tdApp" id="mainBody" >
 
     <header id="header1" ng-controller="MainController">
 
@@ -34,7 +34,7 @@
         </div>
 
         <div class="dropdown headerBut">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" ng-model="name">{{fname}}
+            <button class="btn btn-primary dropdown-toggle" ng-controller="adController" type="button" data-toggle="dropdown" >{{fname}}
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
