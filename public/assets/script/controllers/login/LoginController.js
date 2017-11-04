@@ -28,8 +28,6 @@ app.controller('LoginController', ['$scope', 'LoginService', function ($scope, L
         if (document.getElementById("female").checked) {
             sex = "female";
         }
-
-
         LoginService.register({ "name": name, "lastname": lastname, "email": email, "birthday": birthday, "sex": sex, "password": password }).then(function (result) {
             location.reload();
         });
