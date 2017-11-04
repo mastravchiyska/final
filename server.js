@@ -18,10 +18,10 @@ app.use(session({
   resave:true
 }));
 
-var register = require('./routes/register');
-var login = require('./routes/login');
-var logout = require('./routes/logout');
-var user = require('./routes/user');
+var register = require('./server/routes/register');
+var login = require('./server/routes/login');
+var logout = require('./server/routes/logout');
+var user = require('./server/routes/user');
 
 app.use(function (req, res, next) {
 
