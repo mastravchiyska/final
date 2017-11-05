@@ -21,4 +21,8 @@ var app = angular.module('tdApp', ['ngRoute']).
                 templateUrl: 'assets/script/controllers/friendList/friendList.htm',
                 controller: 'friendListController'
             })
+            .when('/friendProfile', {
+                templateUrl: 'assets/script/controllers/friendProfile/friendProfile.htm',
+                controller: 'friendProfileController'
+            })
     }]);
