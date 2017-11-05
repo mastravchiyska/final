@@ -1,0 +1,21 @@
+<header ng-controller="HeaderController">
+    <div class="td-header-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2">
+                    <img src="assets/images/logo.png" alt="logo" id="logo">
+                </div>
+                <div class="col-sm-10">
+                    <div class="row" ng-if="!isLogged">
+                        <div class="col-sm-3 col-sm-offset-5"><input type="text" ng-model="loginForm.email" placeholder="email" class="form-control login"></div>
+                        <div class="col-sm-3"><input type="password" placeholder="password" ng-model="loginForm.password" class="form-control login"></div>
+                        <div class="col-sm-1"><input type="button" value="Login" ng-click="loginSubmit()" class="btn btn-primary headerBut"></div>
+                    </div>
+                    <div class="row" ng-if="isLogged">
+                        <p>Hello, {{ userData.name }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
