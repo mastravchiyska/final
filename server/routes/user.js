@@ -165,10 +165,10 @@ router.post('/editPost/:postId', function (req, res, next) {
     }
 });
 
-router.get('/listPosts/', function (req, res, next) {
+router.get('/listPosts', function (req, res, next) {
     id = checkForSession(req);
     if (id) {
-        postModel.listPosts(id).then(function (data) {
+        postModel.listPosts().then(function (data) {
             res.json({ data: data });
         });
     } else {

@@ -40,9 +40,9 @@ PostModel.prototype.editPost = function (postId, userId, postContent) {
     });
 };
 
-PostModel.prototype.listPosts = function (userId) {
+PostModel.prototype.listPosts = function () {
     return new Promise(function (resolve, reject) {
-        this.postCollection.find({ userId: userId })
+        this.postCollection.find()
             .then(function (data) {
                 resolve(data);
             }).catch(function (err) {

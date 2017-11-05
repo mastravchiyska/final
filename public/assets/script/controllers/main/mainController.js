@@ -1,11 +1,24 @@
 app.controller('MainController', ['$scope', 'MainService', function ($scope, MainService) {
-    /*var sessionId = sessionStorage.getItem('session_id')
-    $scope.createPost = function () {
-        var postContent = document.getElementById("postText").value;
-        MainService.createPost({ "userId": sessionId, "postContent": postContent }).then(function (result) {
-            console.log(result);
+
+    $scope.postForm = {
+        postContent: ''
+    };
+
+    $scope.createPost = function (data) {
+        var text = $scope.postForm;
+        MainService.createPost(text).then(function (result) {
+            console.log(text)
+            // MainService.listPosts().then(function (result) {
+            //     $scope.posts = result.data.data;
+            //});
+            $scope.posts.push(result.data);
         });
     };
-    
-    $scope.butName = name;*/
+
+
+    MainService.listPosts().then(function (result) {
+        $scope.posts = result.data.data;
+    });
+
+
 }]);
