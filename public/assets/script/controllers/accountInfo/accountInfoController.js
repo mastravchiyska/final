@@ -1,10 +1,9 @@
 app.controller('accountInfoController', ['$scope', 'accountInfoService',
     function ($scope, accountInfoService) {
-        $scope.showAccountInfo = function () {
-            $scope.user = JSON.parse(localStorage.getItem('user'));
-            console.log($scope.user);
-            accountInfoService.showAccountInfo($scope.user._id).then(function (result) {
-                resolve(result);
-            });
-        };
+
+        $scope.user = JSON.parse(localStorage.getItem('user'));
+        accountInfoService.showAccountInfo($scope.user._id).then(function (result) {
+            console.log(result);
+        });
+
     }]);
