@@ -1,11 +1,14 @@
 <td-header></td-header>
-<!--
-<div ng-controller="MainController">
-    <textarea name="postContent" cols="70" rows="5" placeholder="Create a post..." id="postText"></textarea>
-    <input type="button" value="Publish" class="btn btn-primary" ng-click="createPost()">
-    <div>This will be a post</div> 
+
+<div class="main-page-wrapper content-fluid" ng-controller="PostController">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="post-form">
+                <textarea name="postContent" cols="70" rows="5" ng-model="postForm.content" placeholder="Create a post..."></textarea>
+                <input type="button" value="Publish" class="btn btn-primary" ng-click="createPost()">
+            </div>
+        </div>
+        <div class="col-sm-4"></div> 
+    </div>
 </div>
 
-<div ng-controller="adController">
-   <button ng-click="showDetails()" value="Clickme">ghshf</button>
-</div> -->

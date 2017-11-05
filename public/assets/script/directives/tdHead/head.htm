@@ -12,10 +12,12 @@
                         <div class="col-sm-1"><input type="button" value="Login" ng-click="loginSubmit()" class="btn btn-primary headerBut"></div>
                     </div>
                     <div class="row" ng-if="isLogged">
-                        <div ><input type="text" placeholder="search" class="form-control"></div>
-                        <div><a ng-href="/#/account-info" ng-click="showAccountInfo()">{{ userData.name }}</a></div>
-                        <div><a ng-href="/#/main-page">Home</a></div>
-                        <div class="col-sm-1"><input type="button" value="Logout" ng-click="logout()" class="btn btn-primary headerBut"></div>
+                        <div class="col-sm-6"><input type="text" placeholder="search" class="form-control"></div>
+                        <div class="col-sm-4 col-sm-offset-2 profile-menu">
+                            <a ng-href="/#/account-info" ng-click="showAccountInfo()">{{ userData.name }}</a>
+                            <a ng-href="/#/main-page">Home</a>
+                            <input type="button" value="Logout" ng-click="logout()" class="btn btn-primary headerBut">
+                        </div>
                     </div>
                 </div>
             </div>
