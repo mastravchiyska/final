@@ -1,14 +1,18 @@
-<div ng-controller="accountInfoController">
-    <td-header></td-header>
-        <div>
+<td-header></td-header>
+<div class="main-page-wrapper content-fluid" ng-controller="accountInfoController"> 
+    <div class="row">
+        <div class="col-sm-8">
+            <td-post></td-post>
+        </div>
+        <div class="my-profile col-sm-4">
             <h2> My Profile</h2>
             <p>{{user.name}}</p> <br>
             <p>{{user.lastname}}</p><br>
             <p>{{user.email}}</p><br>
             <p>{{user.sex}}</p><br>
             <p>{{user.birthday}}</p><br>
-            <a ng-href="/#/account-update">aaaaaaaaaaaaaaaaaaaaa</a>
-            <a ng-href="/#/friendList">BBBBBBBBBBBBBBBBBBBBB</a>
-            <div><input type="button" value="Update" class="btn btn-primary" ng-href="/#/account-update"></div>
+            <a ng-href="/#/account-update">Update</a>
+            <a ng-href="/#/friendList">Friends</a>  
         </div>
+    </div>
 </div>
