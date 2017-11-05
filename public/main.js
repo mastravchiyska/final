@@ -13,4 +13,8 @@ var app = angular.module('tdApp', ['ngRoute']).
                 templateUrl: 'assets/script/controllers/accountInfo/accountInfo.htm',
                 controller: 'accountInfoController'
             })
+            .when('/account-update', {
+                templateUrl: 'assets/script/controllers/updateAccount/updateAccount.htm',
+                controller: 'updateAccountController'
+            })
     }]);
