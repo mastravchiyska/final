@@ -1,9 +1,12 @@
 <div ng-controller="accountInfoController">
-<td-header></td-header>
-<img src="" alt="This will be a profile picture"><br>
-<span>{{fname}}</span> <br>
-<span>{{lname}}</span><br>
-<span>{{mail}}</span><br>
-<span>{{sex}}</span><br>
-<span>{{bday}}</span><br>
+    <td-header></td-header>
+        <div>
+            <h2> My Profile</h2>
+            <p>{{user.name}}</p> <br>
+            <p>{{user.lastname}}</p><br>
+            <p>{{user.email}}</p><br>
+            <p>{{user.sex}}</p><br>
+            <p>{{user.birthday}}</p><br>
+            <div><input type="button" value="Register" class="btn btn-primary" ng-click="update()"></div>
+        </div>
 </div>
