@@ -5,10 +5,4 @@ app.controller('adController', ['$scope', 'adService', function ($scope, adServi
     $scope.mail = users.email;
     $scope.sex = users.sex;
     $scope.bday = users.birthday;
-    
-    $scope.showDetails = function () {
-        // var sessionId = sessionStorage.getItem('session_id')
-        
-
-    };
 }]);
