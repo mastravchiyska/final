@@ -1,35 +1,21 @@
-app.controller('HomeController', ['$scope', 'HomeService', function ($scope, HomeService) {
-    /*$scope.user = '';
-
-    $scope.login = function () {
-
-        var email = document.getElementById("loginemail").value;
-        var pass = document.getElementById("loginpass").value;
-        HomeService.login({ "email": "Doncho@mail.com", "password": "verySecure1!" }).then(function (result) {
-            sessionStorage.setItem('session_id', result.data.data._id);
-            localStorage.setItem('testObject', JSON.stringify(result.data.data));
-            location.reload();
-        });
-    
+app.controller('HomeController', ['$scope', '$window', 'HomeService','HeaderService',
+ function ($scope, $window, HomeService, HeaderService) {
+    $scope.registerForm = {
+        name:'',
+        lastname: '',
+        email: '',
+        password: '',
+        birthday: '',
+        sex: ''
     };
 
     $scope.register = function () {
-        var name = document.getElementById("name").value;
-        var lastname = document.getElementById("lastname").value;
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
-        var birthday = document.getElementById("birthday").value;
-        var sex;
-        if (document.getElementById("male").checked) {
-            console.log(sex)
-        }
-        if (document.getElementById("female").checked) {
-            sex = "female";
-        }
-        HomeService.register({ "name": name, "lastname": lastname, "email": email, "birthday": birthday, "sex": sex, "password": password }).then(function (result) {
-            location.reload();
+        var user = $scope.registerForm;
+        HomeService.register(user).then(function (result) {
+            HeaderService.login({email: user.email, password: user.password}).then(function(result) {
+            localStorage.setItem('user', JSON.stringify(result.data.data));
+            $window.location.href = '/#/main-page';
         });
-
+        });
     };
-*/
 }]);

@@ -28,4 +28,11 @@ function ($scope, $window, $location, HeaderService) {
         });
     };
 
+    $scope.logout = function() {
+        HeaderService.logout().then(function(){
+            localStorage.removeItem('user');
+             $window.location.href = '/#/';
+        });
+    };
+
 }]);

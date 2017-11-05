@@ -12,7 +12,9 @@
                         <div class="col-sm-1"><input type="button" value="Login" ng-click="loginSubmit()" class="btn btn-primary headerBut"></div>
                     </div>
                     <div class="row" ng-if="isLogged">
-                        <p>Hello, {{ userData.name }}</p>
+                        <div ><input type="text" placeholder="search" class="form-control"></div>
+                        <div><a ng-href="/#/account-info">{{ userData.name }}</a></div>
+                        <div class="col-sm-1"><input type="button" value="Logout" ng-click="logout()" class="btn btn-primary headerBut"></div>
                     </div>
                 </div>
             </div>

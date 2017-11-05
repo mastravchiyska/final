@@ -8,5 +8,9 @@ var app = angular.module('tdApp', ['ngRoute']).
             .when('/main-page', {
                 templateUrl: 'assets/script/controllers/main/main.htm',
                 controller: 'MainController'
-            });
+            })
+            .when('/account-info', {
+                templateUrl: 'assets/script/controllers/accountInfo/accountInfo.htm',
+                controller: 'accountInfoController'
+            })
     }]);
