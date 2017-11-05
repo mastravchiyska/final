@@ -19,5 +19,6 @@ app.controller('updateAccountController', ['$scope', 'updateAccountService',
             updateAccountService.updateInfo(data).then(function (result) {
                 console.log(result.d);
             })
+            
         };
     }]);

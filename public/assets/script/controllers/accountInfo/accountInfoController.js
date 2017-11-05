@@ -1,5 +1,5 @@
 app.controller('accountInfoController', ['$scope', 'accountInfoService',
-    function ($scope, $window,$location, accountInfoService) {
+    function ($scope, accountInfoService) {
         $scope.showAccountInfo = function () {
             $scope.user = JSON.parse(localStorage.getItem('user'));
             console.log($scope.user);
