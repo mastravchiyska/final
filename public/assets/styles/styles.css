@@ -136,3 +136,33 @@ a:visited {
     font-weight: bold;
     color: #525252;
 }
+
+#updateForm{
+    width: 700px;
+    margin-left: 400px;
+    margin-top: 100px;
+    padding: 70px;
+}
+
+.updateFormfield{
+margin: 10px;
+}
+
+#requestForm{
+    width: 700px;
+    padding: 40px;
+    margin-left: 400px;
+    margin-top: 50px;
+}
+
+#requestField button{
+    margin-right: 20px;
+    margin-left: 20px;
+
+}
+
+#requestField a{
+    display: inline-block;
+    width: 300px;
+    text-align: center;
+}

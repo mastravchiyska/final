@@ -7,16 +7,20 @@ app.controller('friendRequestsController', ['$scope', 'friendRequestsService',
         var userId = user._id;
         var counter = 0;
         friendRequestsService.listRequests(userId).then(function (result) {
+            console.log(result.data.data)
             $scope.requests = result.data.data;
         });
-        friendRequestsService.acceptRequest(friendId).then(function (result) {
-            console.log(insertId);
-        });
-        // $scope.ShowId = function (event) {
-        //     targetId = event.target.id - 1;
-        //     insertId = $scope.requests[targetId]._id;
-      
-        // }
 
+        $scope.ShowId = function (friendId) {
+            console.log(friendId);
+            friendRequestsService.acceptRequest(friendId).then(function (result) {
+                console.log(result);
+            });
+        }
 
+        $scope.test = function (friendId) {
+            friendRequestsService.removeRequest(friendId).then(function (result) {
+                console.log(result);
+            });
+        }
     }]);

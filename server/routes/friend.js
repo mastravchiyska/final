@@ -75,7 +75,6 @@ router.get('/requestList', function (req, res) {
                         }
                     })
             }, this);
-            res.json({  data: requests });
         })
     } else {
         res.status(400).json({ message: 'Something went wrong!' });
