@@ -1,25 +1,12 @@
-app.controller('MainController', ['$scope', '$rootScope', 'MainService', function ($scope, $rootScope, MainService) {
+app.controller('MainController', ['$scope', 'MainService', function ($scope, MainService) {
     $scope.posts = [];
     $scope.postForm = {
         postContent: ''
     };
-
-    if ($rootScope.isMyProfile === undefined) {
-        $scope.isMyProfile = true;
-    } else {
-        $scope.isMyProfile = $rootScope.isMyProfile;
-    }
+    $scope.mainPage = true;
     
     this.$onInit = function () {
         getPosts();
-    };
-
-    $scope.createPost = function (data) {
-        var text = $scope.postForm;
-        MainService.createPost(text).then(function (result) {
-            getPosts();
-            $scope.postForm.postContent = '';
-        });
     };
 
     function getPosts() {

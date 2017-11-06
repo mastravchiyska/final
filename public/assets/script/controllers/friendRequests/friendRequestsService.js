@@ -11,8 +11,7 @@ app.factory('friendRequestsService', function ($http, $rootScope) {
         });
     }
 
-    // ListRequests.prototype.listRequests= function (data) {
-        
+    // ListRequests.prototype.listRequests= function (data) {  
     //     return new Promise(function(resolve, reject) {
     //         $http.get('http://localhost:4000/friend/requestList', data).then(function(response) {
     //             resolve(response);
