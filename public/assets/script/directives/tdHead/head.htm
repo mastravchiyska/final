@@ -14,9 +14,9 @@
                     <div class="row" ng-if="isLogged">
                         <div class="col-sm-6"><input type="text" placeholder="search" class="form-control"></div>
                         <div class="col-sm-4 col-sm-offset-2 profile-menu">
-                            <a href="#/friend-requests">Requests</a>
-                            <a ng-href="/#/account-info">{{ userData.name }}</a>
+                            <a ng-href="/#/account-info/{{userData._id}}">{{ userData.name }}</a>
                             <a ng-href="/#/main-page">Home</a>
+                            <a href="#/friend-requests">Requests</a>
                             <input type="button" value="Logout" ng-click="logout()" class="btn btn-primary headerBut">
                         </div>
                     </div>

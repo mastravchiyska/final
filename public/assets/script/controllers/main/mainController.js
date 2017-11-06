@@ -1,24 +1,26 @@
 app.controller('MainController', ['$scope', 'MainService', function ($scope, MainService) {
-
+    $scope.posts = [];
     $scope.postForm = {
         postContent: ''
+    };
+
+    this.$onInit = function () {
+        getPosts();
     };
 
     $scope.createPost = function (data) {
         var text = $scope.postForm;
         MainService.createPost(text).then(function (result) {
-            console.log(text)
-            // MainService.listPosts().then(function (result) {
-            //     $scope.posts = result.data.data;
-            //});
-            $scope.posts.push(result.data);
+            getPosts();
+            $scope.postForm.postContent = '';
         });
     };
 
-
-    MainService.listPosts().then(function (result) {
-        $scope.posts = result.data.data;
-    });
-
+    function getPosts() {
+        MainService.listFriendsPosts().then(function (result) {
+            $scope.posts = result.data.data;
+            $scope.$apply();
+        });
+    }
 
 }]);

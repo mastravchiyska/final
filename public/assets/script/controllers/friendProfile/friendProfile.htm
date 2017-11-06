@@ -1,0 +1,17 @@
+<td-header></td-header>
+<div class="main-page-wrapper content-fluid" ng-controller="friendProfileController"> 
+    <div class="row">
+        <div class="col-sm-8">
+            <td-post></td-post>
+        </div>
+        <div class="user-profile col-sm-4">
+            <p>{{friend.name}}</p> <br>
+            <p>{{friend.lastname}}</p><br>
+            <p>{{friend.email}}</p><br>
+            <p>{{friend.sex}}</p><br>
+            <p>{{friend.birthday}}</p><br>
+            <input type="button" value="Add to friends list" ng-click="addToFriends()" class="btn btn-primary headerBut">
+            <a ng-href="/#/friendList">Friends</a>  
+        </div>
+    </div>
+</div>

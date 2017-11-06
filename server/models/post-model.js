@@ -1,14 +1,15 @@
 var DbConnect = require('../models/db-connection');
-var UserModel = require('../models/user-model');
+var FriendsModel = require('./friend-model');
 
 function PostModel() {
     db = new DbConnect();
+    friendsModel = new FriendsModel();
     postCollection = db.get('userPosts');
 }
 
-PostModel.prototype.createPost = function (userId, postContent) {
+PostModel.prototype.createPost = function (userId, name, date, postContent) {
     return new Promise(function (resolve, reject) {
-        this.postCollection.insert({ userId: userId, postContent: postContent })
+        this.postCollection.insert({ userId: userId, name: name, date: date, postContent: postContent })
             .then(function (data) {
                 resolve(data);
             }).catch(function (err) {
@@ -40,14 +41,42 @@ PostModel.prototype.editPost = function (postId, userId, postContent) {
     });
 };
 
-PostModel.prototype.listPosts = function () {
+PostModel.prototype.listPosts = function (userId) {
     return new Promise(function (resolve, reject) {
-        this.postCollection.find()
+        this.postCollection.find({ userId: userId })
             .then(function (data) {
                 resolve(data);
             }).catch(function (err) {
                 reject(err);
             });
+    });
+};
+
+PostModel.prototype.listFriendsPosts = function (userId) {
+    return new Promise(function (resolve, reject) {
+        this.friendsModel.listFriends(userId).then(function(result) {
+            var friendsList = result;
+            var friendNumber = friendsList.length;
+            var returnedCounter = 0;
+            var findedPost = [];
+            friendsList.forEach(function(friend) {
+                this.postCollection.find({ userId: friend.friendId })
+                    .then(function (data) {
+                        returnedCounter++;
+                        if(data.length > 0) {
+                            findedPost = findedPost.concat(data);
+                        }
+                        if(friendNumber == returnedCounter) {
+                            resolve(findedPost);
+                        }
+                    }).catch(function (err) {
+                    returnedCounter++;
+                    if(friendNumber == returnedCounter) {
+                        resolve(findedPost);
+                    }
+                });
+            });
+        });
     });
 };
 

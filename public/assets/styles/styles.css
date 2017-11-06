@@ -110,7 +110,7 @@ a:visited {
     color: #525252;
 }
 
-.my-profile {
+.user-profile {
      background-color: #fff;
     border: 1px solid #00ccff;
     margin-bottom: 10px;
@@ -118,7 +118,7 @@ a:visited {
     border-radius: 5px;
 }
 
-.my-profile a {
+.user-profile a {
     color: #00ccff;
     font-size: 16px;
     padding: 10px;
