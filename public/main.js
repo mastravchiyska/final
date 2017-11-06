@@ -9,7 +9,7 @@ var app = angular.module('tdApp', ['ngRoute']).
                 templateUrl: 'assets/script/controllers/main/main.htm',
                 controller: 'MainController'
             })
-            .when('/account-info', {
+            .when('/account-info/:userId', {
                 templateUrl: 'assets/script/controllers/accountInfo/accountInfo.htm',
                 controller: 'accountInfoController'
             })
@@ -21,8 +21,9 @@ var app = angular.module('tdApp', ['ngRoute']).
                 templateUrl: 'assets/script/controllers/friendList/friendList.htm',
                 controller: 'friendListController'
             })
-            .when('/friendProfile', {
+    }]);
+/*
+    .when('/friendProfile', {
                 templateUrl: 'assets/script/controllers/friendProfile/friendProfile.htm',
                 controller: 'friendProfileController'
-            })
-    }]);
+            })*/

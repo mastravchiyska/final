@@ -4,9 +4,13 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var mongodb = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/facebook');
 var session = require('express-session');
 var app = express();
+
+var basicRoutes = require('./server/routes/basic');
+var user = require('./server/routes/user');
+var friend = require('./server/routes/friend');
+var post = require('./server/routes/post');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -17,11 +21,6 @@ app.use(session({
   saveUnititialized:true,
   resave:true
 }));
-
-var register = require('./server/routes/register');
-var login = require('./server/routes/login');
-var logout = require('./server/routes/logout');
-var user = require('./server/routes/user');
 
 app.use(function (req, res, next) {
 
@@ -42,11 +41,10 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/login', login);
-app.use('/register', register);
-app.use('/logout', logout);
+app.use(basicRoutes);
 app.use('/user', user);
-
+app.use('/friend', friend);
+app.use('/post', post);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(4000, function () {
