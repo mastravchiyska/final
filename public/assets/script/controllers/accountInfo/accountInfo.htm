@@ -11,7 +11,7 @@
             </div>
             <p>E-mail: {{user.email}}</p>
             <p>Sex: {{user.sex}}</p>
-            <p>Birth date: {{user.birthday}}</p>
+            <p>Birth date: {{user.birthday | date : 'dd.MM.yyyy HH:mm'}}</p>
             <a ng-href="/#/account-update">Update</a>
             <a ng-href="/#/friendList">Friends</a>
         </div>
@@ -22,7 +22,7 @@
             </div>
             <p>E-mail: {{user.email}}</p>
             <p>Sex: {{user.sex}}</p>
-            <p>Birth date: {{user.birthday}}</p>
+            <p>Birth date: {{user.birthday | date : 'dd.MM.yyyy HH:mm'}}</p>
             <a ng-href="/#/friendList">Friends</a>
             <input type="button" value="Add" ng-click="" class="btn btn-primary">
         </div>

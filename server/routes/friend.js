@@ -14,7 +14,7 @@ function checkForSession(req) {
     return sessionId;
 }
 
-router.get('/add/:id', function (req, res) {
+router.get('/add/:friendId', function (req, res) {
     var id = checkForSession(req);
     var friendId = req.params.id;
     if (id) {
@@ -75,6 +75,7 @@ router.get('/requestList', function (req, res) {
                         }
                     })
             }, this);
+            res.json({  data: requests });
         })
     } else {
         res.status(400).json({ message: 'Something went wrong!' });
