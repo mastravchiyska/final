@@ -1,0 +1,9 @@
+<td-header></td-header>
+<div ng-controller="friendRequestsController">
+    <div ng-repeat="request in requests">
+        <a ng-href="/#/account-info/{{request._id}}">{{request.name}} {{request.lastname}}</a>
+        <button>Accept</button>
+        <button>Decline</button>
+        <hr>
+    </div>
+</div>

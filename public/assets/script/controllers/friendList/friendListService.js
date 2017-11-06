@@ -5,7 +5,7 @@ app.factory('friendListService', function ($http, $rootScope) {
     ListFriends.prototype.listFriends= function (data) {
         
         return new Promise(function(resolve, reject) {
-            $http.get('http://localhost:4000/user/friends', data).then(function(response) {
+            $http.get('http://localhost:4000/friend/list', data).then(function(response) {
                 resolve(response);
             });
         });
