@@ -25,10 +25,9 @@ var app = angular.module('tdApp', ['ngRoute']).
                 templateUrl: 'assets/script/controllers/friendRequests/friendRequests.htm',
                 controller: 'friendRequestsController'
             })
+            .when('/results-from-search',{
+                templateUrl: 'assets/script/controllers/searchResults/searchResults.htm',
+                controller: 'searchResultsController'
+            })
     }]);
-/*
-    .when('/friendProfile', {
-                templateUrl: 'assets/script/controllers/friendProfile/friendProfile.htm',
-                controller: 'friendProfileController'
-            })*/
         

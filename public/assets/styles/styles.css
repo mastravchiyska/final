@@ -125,59 +125,14 @@ a:visited {
     float:  right;
 }
 
-.profile-info p{
+.profile-info p {
     font-size: 30px;
     font-weight: bold;
     color: #564a4a;
 }
 
-/*
-#search{
-    width: 5em;
-}
-
-.well{
-    width: 47.6em;
-    margin-left: 30%;
-    background-color:rgba(	0, 204, 255, 0.4);
-}
-
-.login{
-    width: 20em;
-    float: right;
-    margin: 0.5em;
-    margin-top: -0.5em;
-}
-
-.headerBut{
-    float: right;
-    margin: 0.5em;
-    margin-top: -0.5em;
-}
-
-#logo{
-    height: 2em;
-}
-.radio-inline{
+.search-title {
+    font-size: 16px;
     font-weight: bold;
-    margin: 0.5em;
-    text-align: left;
+    color: #525252;
 }
-
-.well>p{
-    font-weight: bold;
-    text-align: center;
-}
-
-.registerb{
-    margin-left: 20em;
-}
-
-#mainBody{
-    background-color: rgb(244, 247, 246)
-}
-
-#search{
-    width: 20em;
-    display: block;
-}*/

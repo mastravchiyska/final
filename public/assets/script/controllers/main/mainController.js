@@ -9,8 +9,7 @@ app.controller('MainController', ['$scope', '$rootScope', 'MainService', functio
     } else {
         $scope.isMyProfile = $rootScope.isMyProfile;
     }
-
-    console.log($scope.isMyProfile);
+    
     this.$onInit = function () {
         getPosts();
     };

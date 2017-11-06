@@ -17,5 +17,14 @@ app.factory('HeaderService', function ($http, $rootScope) {
             });
         }); 
     }
+
+    User.prototype.search = function(searchString) {
+         return new Promise(function(resolve, reject) {
+            $http.post('http://localhost:4000/search', searchString).then(function(response) {
+                resolve(response);
+            });
+        }); 
+    }
+    
     return new User();
 });

@@ -15,8 +15,8 @@ FriendModel.prototype.addFriend = function (userId, friendId) {
                         resolve(true);
                     });
             }).catch(function (err) {
-            reject(err);
-        });
+                reject(err);
+            });
     });
 };
 
@@ -26,8 +26,8 @@ FriendModel.prototype.listFriends = function (userId) {
             .then(function (data) {
                 resolve(data);
             }).catch(function (err) {
-            reject(err);
-        });
+                reject(err);
+            });
     });
 };
 
@@ -37,8 +37,8 @@ FriendModel.prototype.sendRequest = function (userId, friendId, status) {
             .then(function () {
                 resolve(true);
             }).catch(function (err) {
-            reject(err);
-        });
+                reject(err);
+            });
     });
 };
 
@@ -48,8 +48,8 @@ FriendModel.prototype.listRequests = function (userId) {
             .then(function (data) {
                 resolve(data);
             }).catch(function (err) {
-            reject(err);
-        });
+                reject(err);
+            });
     });
 };
 
@@ -59,8 +59,8 @@ FriendModel.prototype.deleteFriendRequest = function (requestId) {
             .then(function () {
                 resolve(true);
             }).catch(function (err) {
-            reject(err);
-        });
+                reject(err);
+            });
     });
 };
 
