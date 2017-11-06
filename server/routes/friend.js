@@ -14,9 +14,9 @@ function checkForSession(req) {
     return sessionId;
 }
 
-router.get('/add/:id', function (req, res) {
+router.get('/add/:friendId', function (req, res) {
     var id = checkForSession(req);
-    var friendId = req.params.id;
+    var friendId = req.params.friendId;
     if (id) {
         friendModel.addFriend(id, friendId).then(function (data) {
             res.json({ message: 'The friend was added!' });
