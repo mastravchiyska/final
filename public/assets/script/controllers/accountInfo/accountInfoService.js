@@ -19,4 +19,5 @@ app.factory('accountInfoService', function ($http, $rootScope) {
     };
     
     return new AccountInfo();
+    
 });

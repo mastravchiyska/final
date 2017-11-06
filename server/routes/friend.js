@@ -59,7 +59,9 @@ router.get('/list', function (req, res) {
 router.get('/requestList', function (req, res) {
     var id = checkForSession(req);
     if (id) {
+        console.log(id)
         friendModel.listRequests(id).then(function (data) {
+            console.log(data);
             var dataLength = data.length;
             var responded = 0;
             var requests = [];
@@ -73,7 +75,7 @@ router.get('/requestList', function (req, res) {
                         }
                     })
             }, this);
-        });
+        })
     } else {
         res.status(400).json({ message: 'Something went wrong!' });
     }

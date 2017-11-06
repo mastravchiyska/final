@@ -1,9 +1,16 @@
-app.controller('MainController', ['$scope', 'MainService', function ($scope, MainService) {
+app.controller('MainController', ['$scope', '$rootScope', 'MainService', function ($scope, $rootScope, MainService) {
     $scope.posts = [];
     $scope.postForm = {
         postContent: ''
     };
 
+    if ($rootScope.isMyProfile === undefined) {
+        $scope.isMyProfile = true;
+    } else {
+        $scope.isMyProfile = $rootScope.isMyProfile;
+    }
+
+    console.log($scope.isMyProfile);
     this.$onInit = function () {
         getPosts();
     };

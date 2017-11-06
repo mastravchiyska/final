@@ -1,18 +1,30 @@
 <td-header></td-header>
-<div class="main-page-wrapper content-fluid" ng-controller="accountInfoController"> 
+<div class="main-page-wrapper content-fluid" ng-controller="accountInfoController">
     <div class="row">
         <div class="col-sm-8">
             <td-post></td-post>
         </div>
-        <div class="my-profile col-sm-4">
+        <div class="my-profile col-sm-4 well" ng-if="isMyProfile">
             <h2> My Profile</h2>
-            <p>{{user.name}}</p> <br>
-            <p>{{user.lastname}}</p><br>
-            <p>{{user.email}}</p><br>
-            <p>{{user.sex}}</p><br>
-            <p>{{user.birthday}}</p><br>
+            <div class="profile-info">
+                <p>{{user.name}} {{user.lastname}}</p>
+            </div>
+            <p>E-mail: {{user.email}}</p>
+            <p>Sex: {{user.sex}}</p>
+            <p>Birth date: {{user.birthday}}</p>
             <a ng-href="/#/account-update">Update</a>
-            <a ng-href="/#/friendList">Friends</a>  
+            <a ng-href="/#/friendList">Friends</a>
+        </div>
+        <div class="my-profile col-sm-4 well" ng-if="!isMyProfile">
+            <h2> {{user.name}}'s profile</h2>
+             <div class="profile-info">
+                <p>{{user.name}} {{user.lastname}}</p>
+            </div>
+            <p>E-mail: {{user.email}}</p>
+            <p>Sex: {{user.sex}}</p>
+            <p>Birth date: {{user.birthday}}</p>
+            <a ng-href="/#/friendList">Friends</a>
+            <input type="button" value="Add" ng-click="" class="btn btn-primary">
         </div>
     </div>
 </div>
