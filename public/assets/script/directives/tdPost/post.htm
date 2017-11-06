@@ -1,5 +1,5 @@
-<div ng-controller ="MainController">
-    <div class="post-form" ng-if="isMyProfile">
+<div ng-controller="PostController">
+    <div class="post-form" ng-if="isMyProfile || mainPage">
         <textarea name="postContent" cols="70" rows="5" ng-model="postForm.postContent" placeholder="Create a post..."></textarea>
         <input type="button" value="Publish" class="btn btn-primary" ng-click="createPost()">
     </div>
