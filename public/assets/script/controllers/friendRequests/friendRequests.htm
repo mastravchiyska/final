@@ -1,9 +1,9 @@
 <td-header></td-header>
-<div ng-controller="friendRequestsController">
-    <div ng-repeat="request in requests">
+<div ng-controller="friendRequestsController" class="well" id="requestForm">
+    <div ng-repeat="request in requests" class="well" id="requestField">
         <a ng-href="/#/account-info/{{request._id}}">{{request.name}} {{request.lastname}}</a>
-        <button type="button" ng-click="ShowId(request._id)"> Accept</button>
-        <button  >Decline</button>
+        <button type="button" ng-click="ShowId(request._id)" class="btn btn-success"> Accept</button>
+        <button  type="button" ng-click="test(request._id)" class="btn btn-danger">Decline</button>
         <hr>
     </div>
 </div>

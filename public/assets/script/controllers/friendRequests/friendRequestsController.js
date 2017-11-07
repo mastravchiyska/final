@@ -18,5 +18,9 @@ app.controller('friendRequestsController', ['$scope', 'friendRequestsService',
             });
         }
 
-
+        $scope.test = function (friendId) {
+            friendRequestsService.removeRequest(friendId).then(function (result) {
+                console.log(result);
+            });
+        }
     }]);

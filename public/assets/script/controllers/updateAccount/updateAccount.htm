@@ -1,11 +1,11 @@
 <div ng-controller="updateAccountController">
     <td-header></td-header>
-    <form action="">
-        <input type="text" placeholder="Name" id="firstName" ng-model="updateForm.name" />
-        <input type="text" placeholder="Last name" id="lastName" ng-model="updateForm.lastname" />
-        <input type="email" placeholder="Email" id="email" ng-model="updateForm.email" />
-        <input type="password" placeholder="Password" id="password" ng-model="updateForm.password" />
-        <input type="date" placeholder="" id="birthday" ng-model="updateForm.birthday" />
-        <input type="button" value="Update" ng-click="update()">
+    <form action="" class="well" id="updateForm">
+        <input type="text" placeholder="Name" class="form-control updateFormfield" id="firstName" ng-model="updateForm.name" />
+        <input type="text" placeholder="Last name" class="form-control updateFormfield" id="lastName" ng-model="updateForm.lastname" />
+        <input type="email" placeholder="Email" id="email" class="form-control updateFormfield" ng-model="updateForm.email" />
+        <input type="password" placeholder="Password" id="password" class="form-control updateFormfield" ng-model="updateForm.password" />
+        <input type="date" placeholder="" id="birthday" class="form-control updateFormfield" ng-model="updateForm.birthday" />
+        <input type="button" value="Update" class="btn btn-primary updateFormfield" ng-click="update()">
     </form>
 </div>
