@@ -6,11 +6,16 @@ var mongodb = require('mongodb');
 var monk = require('monk');
 var session = require('express-session');
 var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 
 var basicRoutes = require('./server/routes/basic');
 var user = require('./server/routes/user');
 var friend = require('./server/routes/friend');
 var post = require('./server/routes/post');
+var ChatModel = require('./server/models/chat-model');
+
+var chatModel = new ChatModel();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -51,3 +56,24 @@ app.listen(4000, function () {
   console.log('Example app listening on port 4000!')
 });
 
+io.on('connection', function(client){
+  client.on('sendMessage', function(data) {
+    chatModel.getChat(data.members).then(function(result) {
+      var newChronology = result.messages.push(data.message);
+      chatModel.saveChat(result._id, newChronology).then(function() {
+        result.messages = newChronology;
+        io.sockets.emit('returnChronology', result);
+        resolve(true);
+      });
+    });
+  });
+
+  client.on('getChronology', function(membersList) {
+    console.log(membersList);
+    chatModel.getChat(membersList).then(function(result) {
+      io.sockets.emit('returnChronology', result);
+    });
+  });
+});
+
+server.listen(3000);

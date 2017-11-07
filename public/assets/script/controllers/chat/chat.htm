@@ -1,0 +1,29 @@
+<td-header></td-header>
+<div class="main-page-wrapper content-fluid" ng-controller="chatController">
+    <div class="row">
+        <div class="col-sm-4">
+            <p class="chat-friends-title">Friends:</p>
+            <table class="table table-bordered table-hover">
+                <tr ng-repeat="friend in friends">
+                    <td ng-click="chooseFriend(friend)">{{friend.name}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-8" ng-if="currentFriend">
+            <p class="chat-main-title">Chat with {{ currentFriend.name }}</p>
+            <div class="chronology-wrapper" ng-if="chronology.length > 0">
+                <div class="clearfix" ng-repeat="message in chronology"><p class="messsage">{{ message.text }}</p></div>
+            </div>
+            <div class="chronology-wrapper" ng-if="chronology.length <= 0">
+                <p>No messages!</p>
+            </div>
+            <div class="clearfix chat-form">
+                <textarea class="form-control" ng-model="message.text"></textarea>
+                <button type="button" ng-click="sendMessage()" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+        <div class="col-sm-8" ng-if="!currentFriend">
+            <p>Choose friend to chat!</p>
+        </div>
+    </div>
+</div>

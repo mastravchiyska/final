@@ -131,8 +131,49 @@ a:visited {
     color: #564a4a;
 }
 
-.search-title {
+.search-title,
+.chat-friends-title,
+.chat-main-title {
     font-size: 16px;
     font-weight: bold;
     color: #525252;
+}
+
+.chronology-wrapper {
+    height: 300px;
+    background-color: #fff;
+    border: 1px solid #00ccff;
+    border-radius: 5px;
+    padding: 10px;
+    overflow: auto;
+}
+
+.chronology-wrapper .messsage {
+    float: left;
+    background: #337ab7;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 450px;
+}
+
+.chronology-wrapper .messsage.my {
+    float: right;
+    background: #c9cacb;
+    padding: 10px;
+    border-radius: 5px;
+    color: #000;
+}
+
+.chat-form .form-control {
+    float: left;
+    width: 80%;
+    height: 60px;
+    resize: none;
+}
+
+.chat-form .btn {
+    float: left;
+    width: 20%;
+    height: 60px;
 }

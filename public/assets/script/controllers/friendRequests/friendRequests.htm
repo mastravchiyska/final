@@ -2,7 +2,7 @@
 <div ng-controller="friendRequestsController">
     <div ng-repeat="request in requests">
         <a ng-href="/#/account-info/{{request._id}}">{{request.name}} {{request.lastname}}</a>
-        <button id="{{$index+1}}" ng-click="ShowId(request.friendId)">Accept</button>
+        <button type="button" ng-click="ShowId(request._id)"> Accept</button>
         <button  >Decline</button>
         <hr>
     </div>
