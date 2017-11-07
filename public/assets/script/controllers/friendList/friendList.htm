@@ -1,9 +1,10 @@
 <td-header></td-header>
-<div ng-controller="friendListController">
-    <div ng-repeat="friend in friends">
-        <p>{{friend.name}}</p>
-        <p>{{friend.lastname}}</p>
-        <hr>
+<div ng-controller="friendListController" class="main-page-wrapper content-fluid">
+    <div class="row">
+        <h3>Friend list:</h3>
+        <div class="col-sm-8 friend-list-form" ng-repeat="friend in friends">
+            <a ng-href="/#/account-info/{{friend._id}}"><h3>{{friend.name}} {{friend.lastname}}</h3></a>
+        </div>
+        <div class="col-sm-4"></div>
     </div>
 </div>
-

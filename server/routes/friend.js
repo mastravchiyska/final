@@ -64,9 +64,7 @@ router.get('/list', function (req, res) {
 router.get('/requestList', function (req, res) {
     var id = checkForSession(req);
     if (id) {
-        console.log(id)
         friendModel.listRequests(id).then(function (data) {
-            console.log(data);
             var dataLength = data.length;
             var responded = 0;
             var requests = [];
@@ -78,7 +76,12 @@ router.get('/requestList', function (req, res) {
                         if (responded === dataLength) {
                             res.json({ data: requests });
                         }
-                    })
+                    }).catch(function (err) {
+                            responded++;
+                            if (responded === dataLength) {
+                                res.json({ data: requests });
+                            }
+                        });
             }, this);
         })
     } else {
@@ -94,6 +97,18 @@ router.delete('/removeRequest/:requestId', function (req, res) {
         });
     } else {
         res.status(400).json({ message: 'No id!' });
+    }
+});
+
+router.post('/sendRequest/:friendId', function (req, res) {
+    var id = checkForSession(req);
+    var friendId = req.params.friendId;
+    if (id) {
+        friendModel.sendRequest(id, friendId, 1).then(function (data) {
+            res.json({ message: 'Friend reqiest sent!' });
+        });
+    } else {
+        res.status(400).json({ message: 'Something went wrong!' });
     }
 });
 

@@ -6,7 +6,7 @@
             <p class="search-title">Founded users:</p>
             <table class="table table-bordered">
                 <tr ng-repeat="user in founded">
-                    <td><a ng-href="/#/account-info/{{user._id}}">{{user.name}}</a></td>
+                    <td><a ng-href="/#/account-info/{{user._id}}">{{user.name}} {{user.lastname}}</a></td>
                 </tr>
             </table>
         </div>

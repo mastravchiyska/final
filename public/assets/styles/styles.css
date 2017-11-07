@@ -189,14 +189,32 @@ a:visited {
 margin: 10px;
 }
 
-#requestForm{
+.request-form {
+    background-color: #fff;
+    border: 1px solid #00ccff;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.friend-list-form {
+    background-color: #fff;
+    border: 1px solid #00ccff;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+/*#requestForm{
     width: 700px;
     padding: 40px;
     margin-left: 400px;
     margin-top: 50px;
-}
+}*/
 
-#requestField button{
+/*#requestField button{
     margin-right: 20px;
     margin-left: 20px;
 
@@ -206,4 +224,4 @@ margin: 10px;
     display: inline-block;
     width: 300px;
     text-align: center;
-}
+}*/
