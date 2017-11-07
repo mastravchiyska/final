@@ -6,6 +6,8 @@ app.factory('HeaderService', function ($http, $rootScope) {
         return new Promise(function(resolve, reject) {
             $http.post('http://localhost:4000/login', data).then(function(response) {
                 resolve(response);
+            }).catch(function (err) {
+                reject(err.data.message);
             });
         });
     }

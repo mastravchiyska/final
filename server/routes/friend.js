@@ -26,6 +26,17 @@ router.get('/add/:friendId', function (req, res) {
     }
 });
 
+router.delete('/removeFriend/:friendId', function (req, res) {
+    var friendId = req.params.friendId;
+    if (friendId) {
+        friendModel.removeFriend(friendId).then(function () {
+            res.json({ message: 'This friend was removed!' });
+        });
+    } else {
+        res.status(400).json({ message: 'No id!' });
+    }
+});
+
 router.get('/list', function (req, res) {
     var id = checkForSession(req);
     if (id) {

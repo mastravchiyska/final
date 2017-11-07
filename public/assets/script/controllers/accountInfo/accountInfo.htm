@@ -25,6 +25,7 @@
             <p>Birth date: {{user.birthday | date : 'dd.MM.yyyy HH:mm'}}</p>
             <a ng-href="/#/friendList">Friends</a>
             <input type="button" value="Send friend request" ng-click="addToFriends(user._id)" class="btn btn-primary">
+            <input type="button" value="Remove from friend list" ng-click="removeFriend(user._id)" class="btn btn-primary">
         </div>
     </div>
 </div>

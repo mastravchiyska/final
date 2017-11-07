@@ -20,5 +20,9 @@ app.controller('accountInfoController', ['$scope', '$rootScope', '$routeParams',
                 console.log(result);
             })
         }
-
+        $scope.removeFriend = function(friendId) {
+            friendRequestsService.removeFromFriendList(friendId).then(function (result) {
+                console.log(result);
+            })
+        }
     }]);

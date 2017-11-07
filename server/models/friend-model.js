@@ -20,6 +20,17 @@ FriendModel.prototype.addFriend = function (userId, friendId) {
     });
 };
 
+FriendModel.prototype.removeFriend = function (friendId) {
+    return new Promise(function (resolve, reject) {
+        this.friendCollecion.remove({ friendId: friendId })
+            .then(function () {
+                resolve(true);
+            }).catch(function (err) {
+                reject(err);
+            });
+    });
+};
+
 FriendModel.prototype.listFriends = function (userId) {
     return new Promise(function (resolve, reject) {
         this.friendCollecion.find({ userId: userId })

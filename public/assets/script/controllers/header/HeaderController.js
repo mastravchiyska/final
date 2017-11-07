@@ -1,4 +1,4 @@
-app.controller('HeaderController', ['$scope', '$window', '$location', '$rootScope','HeaderService',
+app.controller('HeaderController', ['$scope', '$window', '$location', '$rootScope', 'HeaderService',
     function ($scope, $window, $location, $rootScope, HeaderService) {
         $scope.userData = {};
         $scope.search = {
@@ -28,6 +28,8 @@ app.controller('HeaderController', ['$scope', '$window', '$location', '$rootScop
             HeaderService.login(data).then(function (result) {
                 localStorage.setItem('user', JSON.stringify(result.data.data));
                 $window.location.href = '/#/main-page';
+            }).catch(function (err) {
+                console.log(err);
             });
         };
 
@@ -47,5 +49,4 @@ app.controller('HeaderController', ['$scope', '$window', '$location', '$rootScop
                 });
             }
         }
-
     }]);

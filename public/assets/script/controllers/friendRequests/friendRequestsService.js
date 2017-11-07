@@ -34,5 +34,13 @@ app.factory('friendRequestsService', function ($http, $rootScope) {
         });
     }
 
+    ListRequests.prototype.removeFromFriendList = function (id) {
+        return new Promise(function (resolve, reject) {
+            $http.delete('http://localhost:4000/friend/removeFriend/' + id).then(function (response) {
+                resolve(response);
+            });
+        });
+    }
+
     return new ListRequests();
 });

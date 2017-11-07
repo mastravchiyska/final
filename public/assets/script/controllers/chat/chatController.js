@@ -15,6 +15,13 @@ app.controller('chatController', ['$scope', 'friendListService', 'socket',
             socket.emit('getChronology', [user._id, $scope.currentFriend._id]);
         };
 
+        $scope.getClass = function getClass(id){
+            if(id === userId){
+                return  "my";
+            }
+             return '';
+        }
+
         $scope.sendMessage = function() {
             socket.emit('sendMessage', {
                 members: [user._id, $scope.currentFriend._id],
