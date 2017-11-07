@@ -5,9 +5,9 @@ function ChatModel() {
     chatCollection = db.get('chat');
 }
 
-ChatModel.prototype.getChat = function (idsList) {
+ChatModel.prototype.getChat = function (chatId) {
     return new Promise(function (resolve, reject) {
-        this.chatCollection.findOne({ members: idsList}).then(function(result) {
+        this.chatCollection.findOne({ _id: chatId}).then(function(result) {
             resolve(result);
         }).catch(function(e) {
             reject(e);

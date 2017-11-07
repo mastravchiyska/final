@@ -2,10 +2,13 @@
 <div ng-controller="friendRequestsController" class="main-page-wrapper content-fluid">
     <div class="row">
         <h3>Your friend' requests:</h3>
-        <div ng-repeat="request in requests" class="col-sm-6 request-form">
+        <div ng-repeat="request in requests" class="col-sm-6 request-form" ng-if= "requests.length > 0">
             <a ng-href="/#/account-info/{{request._id}}">{{request.name}} {{request.lastname}}</a>
             <button type="button" ng-click="acceptRequests(request._id)" class="btn btn-success"> Accept</button>
             <button type="button" ng-click="declineRequests(request._id)" class="btn btn-danger">Decline</button>
+        </div>
+        <div class="col-sm-6 request-form" ng-if= "requests.length <= 0">
+            <p>No friend requests!</p>
         </div>
         <div class="col-sm-6"></div>
     </div>

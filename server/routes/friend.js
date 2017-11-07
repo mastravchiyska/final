@@ -44,28 +44,33 @@ router.get('/list', function (req, res) {
             var dataLength = data.length;
             var responded = 0;
             var friendsList = [];
-            data.forEach(function (element) {
-                if (element.friendId !== null) {
-                    userModel.findUser({ _id: element.friendId })
-                        .then(function (data) {
-                            responded++;
-                            friendsList.push(data[0]);
-                            if (responded === dataLength) {
-                                res.json({ data: friendsList });
-                            }
-                        }).catch(function (err) {
-                            responded++;
-                            if (responded === dataLength) {
-                                res.json({ data: friendsList });
-                            }
-                        });
-                } else {
-                    responded++;
-                    if (responded === dataLength) {
-                        res.json({ data: friendsList });
+            if(data.length <= 0) {
+                res.json({ data: friendsList });
+            } else {
+                data.forEach(function (element) {
+                    if (element.friendId !== null) {
+                        userModel.findUser({ _id: element.friendId })
+                            .then(function (data) {
+                                responded++;
+                                data[0]['chatId'] = element.chatId;
+                                friendsList.push(data[0]);
+                                if (responded === dataLength) {
+                                    res.json({ data: friendsList });
+                                }
+                            }).catch(function (err) {
+                                responded++;
+                                if (responded === dataLength) {
+                                    res.json({ data: friendsList });
+                                }
+                            });
+                    } else {
+                        responded++;
+                        if (responded === dataLength) {
+                            res.json({ data: friendsList });
+                        }
                     }
-                }
-            }, this);
+                }, this);
+            }
         });
     } else {
         res.status(400).json({ message: 'Something went wrong!' });
@@ -79,21 +84,25 @@ router.get('/requestList', function (req, res) {
             var dataLength = data.length;
             var responded = 0;
             var requests = [];
-            data.forEach(function (element) {
-                userModel.findUser({ _id: element.userId })
-                    .then(function (data) {
-                        responded++;
-                        requests.push(data[0]);
-                        if (responded === dataLength) {
-                            res.json({ data: requests });
-                        }
-                    }).catch(function (err) {
+            if(dataLength <= 0) {
+                res.json({ data: requests });
+            } else {
+                data.forEach(function (element) {
+                    userModel.findUser({ _id: element.userId })
+                        .then(function (data) {
                             responded++;
+                            requests.push(data[0]);
                             if (responded === dataLength) {
                                 res.json({ data: requests });
                             }
-                        });
-            }, this);
+                        }).catch(function (err) {
+                                responded++;
+                                if (responded === dataLength) {
+                                    res.json({ data: requests });
+                                }
+                            });
+                }, this);
+            }
         })
     } else {
         res.status(400).json({ message: 'Something went wrong!' });

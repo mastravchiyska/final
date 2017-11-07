@@ -11,7 +11,7 @@
         </div>
         <div class="col-sm-8" ng-if="currentFriend">
             <p class="chat-main-title">Chat with {{ currentFriend.name }}</p>
-            <div class="chronology-wrapper" ng-if="chronology.length > 0">
+            <div id="chat-stage" class="chronology-wrapper" ng-if="chronology.length > 0">
                 <div class="clearfix" ng-repeat="message in chronology" ><p class="messsage" ng-class="getClass(message.userId)">{{ message.text }}</p></div>
             </div>
             <div class="chronology-wrapper" ng-if="chronology.length <= 0">

@@ -13,7 +13,7 @@
                     </div>
                     <div class="row" ng-if="isLogged">
                         <div class="col-sm-6"><input type="text" name="searchString" placeholder="search" class="form-control" ng-model="search.searchString" ng-keypress="myFunct($event)"></div>
-                        <div class="col-sm-4 col-sm-offset-2 profile-menu"> 
+                        <div class="col-sm-6 profile-menu"> 
                             <a ng-href="/#/account-info/{{userData._id}}">{{ userData.name }}</a>
                             <a ng-href="/#/main-page">Home</a>
                             <a href="/#/friend-requests">Requests</a>

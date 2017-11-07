@@ -59,6 +59,9 @@ PostModel.prototype.listFriendsPosts = function (userId) {
             var friendNumber = friendsList.length;
             var returnedCounter = 0;
             var findedPost = [];
+            if(friendNumber <= 0) {
+                resolve(findedPost);
+            }
             friendsList.forEach(function(friend) {
                 this.postCollection.find({ userId: friend.friendId })
                     .then(function (data) {

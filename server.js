@@ -58,19 +58,17 @@ app.listen(4000, function () {
 
 io.on('connection', function(client){
   client.on('sendMessage', function(data) {
-    chatModel.getChat(data.members).then(function(result) {
-      var newChronology = result.messages.push(data.message);
-      chatModel.saveChat(result._id, newChronology).then(function() {
-        result.messages = newChronology;
+    chatModel.getChat(data.chatId).then(function(result) {
+      result.messages.push(data.message);
+      chatModel.saveChat(data.chatId, result.messages).then(function() {
         io.sockets.emit('returnChronology', result);
         resolve(true);
       });
     });
   });
 
-  client.on('getChronology', function(membersList) {
-    console.log(membersList);
-    chatModel.getChat(membersList).then(function(result) {
+  client.on('getChronology', function(chatId) {
+    chatModel.getChat(chatId).then(function(result) {
       io.sockets.emit('returnChronology', result);
     });
   });

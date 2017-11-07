@@ -4,19 +4,26 @@ function FriendModel() {
     db = new DbConnect();
     friendCollecion = db.get('friends');
     requestCollection = db.get('friendsRequests');
+    chatCollecion = db.get('chat');
 }
 
 FriendModel.prototype.addFriend = function (userId, friendId) {
-    return new Promise(function (resolve, reject) {
-        this.friendCollecion.insert({ userId: userId, friendId: friendId })
-            .then(function () {
-                this.requestCollection.findOneAndUpdate({ userId: friendId, friendId: userId }, { $set: { status: 0 } })
-                    .then(function () {
-                        resolve(true);
+    return new Promise(function(resolve, reject) {
+        this.chatCollecion.insert({ messages: [] }).then(function(newChat) {
+            this.friendCollecion.insert({ userId: userId, friendId: friendId, chatId: newChat._id })
+            .then(function() {
+                this.friendCollecion.insert({ userId: friendId, friendId: userId, chatId: newChat._id })
+                    .then(function(data) {
+                        this.requestCollection.findOneAndUpdate({ userId: friendId, friendId: userId }, { $set: { status: 0 } })
+                            .then(function () {
+                                resolve(true);
+                            });
+
                     });
             }).catch(function (err) {
                 reject(err);
             });
+        });
     });
 };
 

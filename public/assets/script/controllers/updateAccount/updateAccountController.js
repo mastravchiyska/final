@@ -1,5 +1,5 @@
-app.controller('updateAccountController', ['$scope', 'updateAccountService',
-    function ($scope, updateAccountService) {
+app.controller('updateAccountController', ['$scope', '$window', 'updateAccountService',
+    function ($scope, $window, updateAccountService) {
         var user = JSON.parse(localStorage.getItem("user"))
         $scope.updateForm = {
             id: '',
@@ -19,7 +19,7 @@ app.controller('updateAccountController', ['$scope', 'updateAccountService',
             data.id = user._id;
             data.sex = user.sex;
             updateAccountService.updateInfo(data).then(function (result) {
-                console.log(result.d);
+                $window.location.href = '/#/account-info/'+user._id;
             })
 
         };

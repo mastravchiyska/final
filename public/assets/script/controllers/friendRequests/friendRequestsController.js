@@ -3,18 +3,27 @@ app.controller('friendRequestsController', ['$scope', 'friendRequestsService',
         var user = JSON.parse(localStorage.getItem("user"))
         var userId = user._id;
         var counter = 0;
-        friendRequestsService.listRequests(userId).then(function (result) {
-            $scope.requests = result.data.data;
-        });
 
-        $scope.acceptRequests = function (friendId) {
-            friendRequestsService.acceptRequest(friendId).then(function (result) {
+        function getRequests(){
+            friendRequestsService.listRequests(userId).then(function (result) {
+                $scope.requests = result.data.data;
                 $scope.$apply();
             });
         }
 
-         $scope.declineRequests = function (friendId) {
-            friendRequestsService.removeRequest(friendId).then(function (result) {
+        this.$onInit = function () {
+            getRequests();
+        };
+
+        $scope.acceptRequests = function (reqiuestId) {
+            friendRequestsService.acceptRequest(reqiuestId).then(function (result) {
+                getRequests();
+            });
+        }
+
+         $scope.declineRequests = function (reqiuestId) {
+            friendRequestsService.removeRequest(reqiuestId).then(function (result) {
+                console.log(reqiuestId);
                  $scope.$apply();
             });
         }
