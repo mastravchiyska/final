@@ -42,6 +42,11 @@ router.get('/list', function (req, res) {
                             if (responded === dataLength) {
                                 res.json({ data: friendsList });
                             }
+                        }).catch(function (err) {
+                            responded++;
+                            if (responded === dataLength) {
+                                res.json({ data: friendsList });
+                            }
                         });
                 } else {
                     responded++;
@@ -71,7 +76,7 @@ router.get('/requestList', function (req, res) {
                         responded++;
                         requests.push(data[0]);
                         if (responded === dataLength) {
-                            res.json({  data: requests });
+                            res.json({ data: requests });
                         }
                     })
             }, this);

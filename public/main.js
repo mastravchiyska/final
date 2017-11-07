@@ -29,5 +29,13 @@ var app = angular.module('tdApp', ['ngRoute']).
                 templateUrl: 'assets/script/controllers/searchResults/searchResults.htm',
                 controller: 'searchResultsController'
             })
+            .when('/chat',{
+                templateUrl: 'assets/script/controllers/chat/chat.htm',
+                controller: 'chatController'
+            })
     }]);
         
+app.factory('socket', function() {
+    var socket = io.connect('http://localhost:3000');
+    return socket;
+});
