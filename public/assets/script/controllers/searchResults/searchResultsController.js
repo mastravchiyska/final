@@ -1,5 +1,5 @@
-app.controller('searchResultsController', ['$scope', '$rootScope', 'searchResultsService',
-    function ($scope, $rootScope, searchResultsService) {
+app.controller('searchResultsController', ['$scope', '$rootScope', 
+    function ($scope, $rootScope) {
 
         this.$onInit = function () {
             $scope.founded = $rootScope.searchResults;

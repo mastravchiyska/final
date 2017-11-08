@@ -2,13 +2,16 @@
 
 <div class="main-page-wrapper content-fluid" ng-controller="searchResultsController">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-8" ng-if="founded.length >0">
             <p class="search-title">Founded users:</p>
             <table class="table table-bordered">
                 <tr ng-repeat="user in founded">
                     <td><a ng-href="/#/account-info/{{user._id}}">{{user.name}} {{user.lastname}}</a></td>
                 </tr>
             </table>
+        </div>
+        <div class="col-sm-8" ng-if="founded.length ==0">
+            <p class="search-title">No users found!</p>
         </div>
         <div class="col-sm-4"></div>
     </div>

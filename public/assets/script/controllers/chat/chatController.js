@@ -1,5 +1,5 @@
-app.controller('chatController', ['$scope', 'friendListService', 'socket',
-    function ($scope, friendListService, socket) {
+app.controller('chatController', ['$scope', 'friendListService', 'socket', 'ErrorService',
+    function ($scope, friendListService, socket, ErrorService) {
         var user = JSON.parse(localStorage.getItem("user"));
         var userId = user._id;
         $scope.currentFriend;
@@ -11,6 +11,8 @@ app.controller('chatController', ['$scope', 'friendListService', 'socket',
             if($scope.friends.length > 0) {
                 $scope.chooseFriend($scope.friends[0]);
             }
+        }).catch(function(data) {
+            ErrorService.processError(data);
         });
         
         $scope.chooseFriend = function(friend) {

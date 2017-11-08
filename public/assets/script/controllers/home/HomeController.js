@@ -1,5 +1,5 @@
-app.controller('HomeController', ['$scope', '$window', 'HomeService','HeaderService',
- function ($scope, $window, HomeService, HeaderService) {
+app.controller('HomeController', ['$scope', '$window', 'HomeService','HeaderService', 'ErrorService',
+ function ($scope, $window, HomeService, HeaderService, ErrorService) {
     $scope.registerForm = {
         name:'',
         lastname: '',
@@ -15,7 +15,11 @@ app.controller('HomeController', ['$scope', '$window', 'HomeService','HeaderServ
             HeaderService.login({email: user.email, password: user.password}).then(function(result) {
             localStorage.setItem('user', JSON.stringify(result.data.data));
             $window.location.href = '/#/main-page';
+        }).catch(function(data) {
+            ErrorService.processError(data);
         });
+        }).catch(function(data) {
+            ErrorService.processError(data);
         });
     };
 }]);

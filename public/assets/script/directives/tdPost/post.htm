@@ -4,7 +4,7 @@
         <input type="button" value="Publish" class="btn btn-primary" ng-click="createPost()">
     </div>
     <p class="post-catgegory-title">Posts:</p>
-    <div class="posts-list">
+    <div class="posts-list" ng-if="posts.length>0">
         <div class="user-posts" ng-repeat="post in posts">
             <div class="post-header content-fluid">
                 <div class="row">
@@ -14,5 +14,8 @@
             </div>
             <div class="post-description">{{ post.postContent }}</div>
         </div>
+    </div>
+    <div class="posts-list" ng-if="posts.length==0">
+        <p>This user has now posts yet :)</p>
     </div>
 </div>

@@ -6,9 +6,7 @@ app.factory('HeaderService', function ($http, $rootScope) {
         return new Promise(function(resolve, reject) {
             $http.post('http://localhost:4000/login', data).then(function(response) {
                 resolve(response);
-            }).catch(function (err) {
-                reject(err.data.message);
-            });
+            }).catch(function(err) { reject(err); });
         });
     }
 
@@ -16,7 +14,7 @@ app.factory('HeaderService', function ($http, $rootScope) {
         return new Promise(function(resolve, reject) {
             $http.get('http://localhost:4000/logout').then(function(response) {
                 resolve(response);
-            });
+            }).catch(function(err) { reject(err); });
         }); 
     }
 
@@ -24,7 +22,7 @@ app.factory('HeaderService', function ($http, $rootScope) {
          return new Promise(function(resolve, reject) {
             $http.post('http://localhost:4000/search', searchString).then(function(response) {
                 resolve(response);
-            });
+            }).catch(function(err) { reject(err); });
         }); 
     }
     

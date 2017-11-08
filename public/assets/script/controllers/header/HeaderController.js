@@ -1,5 +1,5 @@
-app.controller('HeaderController', ['$scope', '$window', '$location', '$rootScope', 'HeaderService',
-    function ($scope, $window, $location, $rootScope, HeaderService) {
+app.controller('HeaderController', ['$scope', '$window', '$location', '$rootScope', 'HeaderService', 'ErrorService',
+    function ($scope, $window, $location, $rootScope, HeaderService, ErrorService) {
         $scope.userData = {};
         $scope.search = {
             searchString: ''
@@ -28,8 +28,8 @@ app.controller('HeaderController', ['$scope', '$window', '$location', '$rootScop
             HeaderService.login(data).then(function (result) {
                 localStorage.setItem('user', JSON.stringify(result.data.data));
                 $window.location.href = '/#/main-page';
-            }).catch(function (err) {
-                console.log(err);
+            }).catch(function(data) {
+                ErrorService.processError(data);
             });
         };
 
@@ -37,15 +37,19 @@ app.controller('HeaderController', ['$scope', '$window', '$location', '$rootScop
             HeaderService.logout().then(function () {
                 localStorage.removeItem('user');
                 $window.location.href = '/#/';
+            }).catch(function(data) {
+                ErrorService.processError(data);
             });
         };
 
-        $scope.myFunct = function (keyEvent) {
+        $scope.searching = function (keyEvent) {
             var data = $scope.search;
             if (keyEvent.which === 13) {
                 HeaderService.search(data).then(function (result) {
                     $rootScope.searchResults = result.data.data;
                     $window.location.href = '/#/results-from-search';
+                }).catch(function(data) {
+                    ErrorService.processError(data);
                 });
             }
         }

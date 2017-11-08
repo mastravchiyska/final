@@ -6,7 +6,7 @@ app.factory('friendRequestsService', function ($http, $rootScope) {
         return new Promise(function (resolve, reject) {
             $http.get('http://localhost:4000/friend//requestList').then(function (response) {
                 resolve(response);
-            });
+            }).catch(function(err) { reject(err); });
         });
     }
 
@@ -14,7 +14,7 @@ app.factory('friendRequestsService', function ($http, $rootScope) {
         return new Promise(function (resolve, reject) {
             $http.get('http://localhost:4000/friend/add/' + id).then(function (response) {
                 resolve(response);
-            });
+            }).catch(function(err) { reject(err); });
         });
     }
 
@@ -22,7 +22,7 @@ app.factory('friendRequestsService', function ($http, $rootScope) {
         return new Promise(function (resolve, reject) {
             $http.delete('http://localhost:4000/friend/removeRequest/' + id).then(function (response) {
                 resolve(response);
-            });
+            }).catch(function(err) { reject(err); });
         });
     }
 
@@ -30,7 +30,7 @@ app.factory('friendRequestsService', function ($http, $rootScope) {
         return new Promise(function (resolve, reject) {
             $http.post('http://localhost:4000/friend/sendRequest/' + id).then(function (response) {
                 resolve(response);
-            });
+            }).catch(function(err) { reject(err); });
         });
     }
 
@@ -38,7 +38,7 @@ app.factory('friendRequestsService', function ($http, $rootScope) {
         return new Promise(function (resolve, reject) {
             $http.delete('http://localhost:4000/friend/removeFriend/' + id).then(function (response) {
                 resolve(response);
-            });
+            }).catch(function(err) { reject(err); });
         });
     }
 

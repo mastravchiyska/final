@@ -1,5 +1,5 @@
-app.controller('friendRequestsController', ['$scope', 'friendRequestsService',
-    function ($scope, friendRequestsService) {
+app.controller('friendRequestsController', ['$scope', 'friendRequestsService', 'ErrorService',
+    function ($scope, friendRequestsService, ErrorService) {
         var user = JSON.parse(localStorage.getItem("user"))
         var userId = user._id;
         var counter = 0;
@@ -8,7 +8,10 @@ app.controller('friendRequestsController', ['$scope', 'friendRequestsService',
             friendRequestsService.listRequests(userId).then(function (result) {
                 $scope.requests = result.data.data;
                 $scope.$apply();
+            }).catch(function(data) {
+                ErrorService.processError(data);
             });
+
         }
 
         this.$onInit = function () {
@@ -18,6 +21,8 @@ app.controller('friendRequestsController', ['$scope', 'friendRequestsService',
         $scope.acceptRequests = function (reqiuestId) {
             friendRequestsService.acceptRequest(reqiuestId).then(function (result) {
                 getRequests();
+            }).catch(function(data) {
+                ErrorService.processError(data);
             });
         }
 
@@ -25,6 +30,8 @@ app.controller('friendRequestsController', ['$scope', 'friendRequestsService',
             friendRequestsService.removeRequest(reqiuestId).then(function (result) {
                 console.log(reqiuestId);
                  $scope.$apply();
+            }).catch(function(data) {
+                ErrorService.processError(data);
             });
         }
 
