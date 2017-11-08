@@ -178,15 +178,15 @@ a:visited {
     height: 60px;
 }
 
-#updateForm{
-    width: 700px;
-    margin-left: 400px;
-    margin-top: 100px;
-    padding: 70px;
+.edit-user-profile {
+    font-size: 18px;
+    font-weight: bold;
+    color: #525252;
+    margin-bottom: 15px;
 }
 
 .updateFormfield{
-margin: 10px;
+    margin: 10px;
 }
 
 .request-form {

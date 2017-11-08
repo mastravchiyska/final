@@ -45,7 +45,7 @@ app.controller('HeaderController', ['$scope', '$window', '$location', '$rootScop
             if (keyEvent.which === 13) {
                 HeaderService.search(data).then(function (result) {
                     $rootScope.searchResults = result.data.data;
-                    $window.location.href = '/#/results-from-search'
+                    $window.location.href = '/#/results-from-search';
                 });
             }
         }

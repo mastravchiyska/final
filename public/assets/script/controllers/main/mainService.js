@@ -22,7 +22,7 @@ app.factory('MainService', function ($http, $rootScope) {
         return new Promise(function(resolve, reject) {
             $http.get('http://localhost:4000/post/list').then(function(response) {
                 resolve(response);
-            });
+            }).catch(function(err) { reject(err); });
         });
     };
 
